@@ -21,7 +21,7 @@ As can be seen in the scout documentation[1], when using the database driver, sc
       - Define a relationship[2] inside your model : 
       - call it like so : User::search('alex')->with('podcasts')
       - you can specify which columns you want returned
-        - if you want to return the url only for example, call it like this : with('profilePic:url')
+        - if you want to return the url only for example, call it like this : with('podcasts:url')
 
 **What's to come :**
   - *Make a composer package in order to make installation easier*
