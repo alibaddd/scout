@@ -223,10 +223,17 @@ class DatabaseEngine extends Engine implements PaginatesEloquentModels
            // passed as parameters.
         ->when(! $builder->callback && count($builder->complexWheres) > 0, function ($query) use ($builder) {
             foreach ($builder->complexWheres as $complexWhere) {
-                $key = $complexWhere[0];
-                $operator = $complexWhere[1];
-                $value = $complexWhere[2];
-                $query->where($key, $operator, $value);
+                if (count($complexWhere) == 2) {
+                    $key = $complexWhere[0];
+                    $operator = '=';
+                    $value = $complexWhere[1];
+                    $query->where($key, $operator, $value);
+                } elseif (count($complexWhere) == 3) {
+                    $key = $complexWhere[0];
+                    $operator = $complexWhere[1];
+                    $value = $complexWhere[2];
+                    $query->where($key, $operator, $value);
+                }
             }
         })  // If with isn't empty, we traverse it and call $query->with on each of its child arrays passed as parameters.
         ->when(! $builder->callback && count($builder->with) > 0, function ($query) use ($builder) {

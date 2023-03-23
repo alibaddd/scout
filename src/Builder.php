@@ -149,7 +149,8 @@ class Builder
             // An array of arrays can be passed as a parameter :
             // where([
             //    ['id', '>', 5],
-            //    ['id', '<', 10]
+            //    ['id', '<', 10],
+            //    ['id', 6]
             // ]);
             $this->complexWheres = $column;
 
