@@ -15,8 +15,17 @@ As can be seen in the scout documentation[1], when using the database driver, sc
     - Any operator supported by the Eloquent Builder is now supported as well : '=', '<', '>', '<=', '>=', '!=', etc.
     - Clauses containing the operator like so : where('id', '>', 5).
     - All changes are fully backward compatible, If no operator is passed as a parameter, it will be assumed that the desired operator is '='
+  - *Added With Clause (set the relationships that should be eager loaded):*
+    - The with() method can now be called on search.
+    - Example :
+      - Define a relationship[2] inside your model : 
+      - call it like so : User::search('alex')->with('podcasts')
+      - you can specify which columns you want returned
+        - if you want to return the url only for example, call it like this : with('profilePic:url')
 
 **What's to come :**
-  - *Add the with clause (set the relationships that should be eager loaded).*
+  - *Make a composer package in order to make installation easier*
+  - *Build rest of currently unsupported builder features*
     
 [1]:https://laravel.com/docs/10.x/scout#where-clauses
+[2]:https://laravel.com/docs/10.x/eloquent-relationships#clipText-46

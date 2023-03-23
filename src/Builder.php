@@ -62,6 +62,13 @@ class Builder
     public $complexWheres = [];
 
     /**
+     * The "with" clauses added to the query.
+     *
+     * @var array
+     */
+    public $with = [];
+
+    /**
      * The "where in" constraints added to the query.
      *
      * @var array
@@ -161,6 +168,20 @@ class Builder
         // If no operator is passed as a parameter, it will be assumed that the desired operator is '='
         // where('id', 5) <=> where('id', '=', 5)
         $this->wheres[$column] = $operator;
+
+        return $this;
+    }
+
+    /**
+     * Set the relationships that should be eager loaded.
+     *
+     * @param  string|array  $relations
+     * @param  string|\Closure|null  $callback
+     * @return $this
+     */
+    public function with($relations, $callback = null)
+    {
+        $this->with[] = [$relations, $callback];
 
         return $this;
     }
