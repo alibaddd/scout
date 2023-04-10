@@ -69,6 +69,13 @@ class Builder
     public $with = [];
 
     /**
+     * The "select" clauses added to the query.
+     *
+     * @var array
+     */
+    public $select = [];
+
+    /**
      * The "where in" constraints added to the query.
      *
      * @var array
@@ -183,6 +190,23 @@ class Builder
     public function with($relations, $callback = null)
     {
         $this->with[] = [$relations, $callback];
+
+        return $this;
+    }
+
+    /**
+     * Set the columns to be selected.
+     *
+     * @param  array|mixed  $columns
+     * @return $this
+     */
+    public function select($columns = ['*'])
+    {
+        $args = func_get_args();
+
+        foreach ($args as $key => $value) {
+            $this->select[] = $value;
+        }
 
         return $this;
     }

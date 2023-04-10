@@ -22,6 +22,10 @@ As can be seen in the scout documentation[1], when using the database driver, sc
       - call it like so : User::search('alex')->with('podcasts')
       - you can specify which columns you want returned
         - if you want to return the url only for example, call it like this : with('podcasts:url')
+  - *Added Select Clause :*
+    - The select() method can now be called on search.
+    - Example :
+      - call it like this : User::search('alex')->select('id', 'name')
 
 **What's to come :**
   - *Make a composer package in order to make installation easier*

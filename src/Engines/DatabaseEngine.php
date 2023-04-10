@@ -244,6 +244,8 @@ class DatabaseEngine extends Engine implements PaginatesEloquentModels
                     $query->with($args[0]);
                 }
             }
+        }) ->when(! $builder->callback && count($builder->select) > 0, function ($query) use ($builder) {
+            $query->select($builder->select);
         })
         ->when(! $builder->callback && count($builder->whereIns) > 0, function ($query) use ($builder) {
             foreach ($builder->whereIns as $key => $values) {
