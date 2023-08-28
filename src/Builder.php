@@ -100,7 +100,7 @@ class Builder
     /**
      * Extra options that should be applied to the search.
      *
-     * @var int
+     * @var array
      */
     public $options = [];
 
